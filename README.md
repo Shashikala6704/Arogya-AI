@@ -1,5 +1,5 @@
 
-# Arogya-AI 🏥🤖
+# Arogya-AI
 
 Arogya-AI is a **smart, offline-first healthcare assistance web application** designed to support symptom checking, risk prediction, and Primary Health Center (PHC) workflows using AI-inspired logic, Firebase, and a modern React UI.
 
