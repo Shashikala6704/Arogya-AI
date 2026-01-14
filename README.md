@@ -1,118 +1,114 @@
 
+# Arogya-AI 🏥🤖
 
-```markdown
-# Arogya-AI
-
-**Arogya-AI** is a health-focused AI project designed to help detect, monitor, or support health insights for users. It combines intelligent systems (AI/ML) with configurable settings stored in `ArogyaAi.ini` to customize behavior.
-
-> ⚠️ *This README assumes contents of the repository and configuration file based on common conventions and project goals.*
+Arogya-AI is a **smart, offline-first healthcare assistance web application** designed to support symptom checking, risk prediction, and Primary Health Center (PHC) workflows using AI-inspired logic, Firebase, and a modern React UI.
 
 ---
 
-## 🚀 Project Overview
+## ✨ Key Features
 
-**Arogya-AI** aims to be:
+- 🩺 **Pocket Doctor – Symptom Checker**
+  - Structured symptom selection
+  - Free-text symptom notes
+  - Real-time vitals validation (BP, SpO₂, sugar, temperature)
 
-- An intelligent assistant for health monitoring or prediction
-- Configurable via `.ini` settings for ease of customization without changing code
-- Simple to setup and run
+- 🧠 **Offline AI Risk Prediction**
+  - Simulated TFLite-style ML model
+  - Uses age, vitals, lab values, and symptom severity
+  - Outputs Low / Moderate / High Risk instantly (no internet needed)
 
-It can be used in healthcare environments for symptom tracking, environment monitoring, and alert systems.
+- 🚨 **Clinical Triage & Alerts**
+  - Detects critical vitals automatically
+  - Prevents report submission if emergency values are found
 
----
+- 🧪 **Lab Report Simulation**
+  - Upload/simulate lab results (Normal / Warning / High Risk)
 
-## 📁 Repository Structure
+- 🏥 **PHC Dashboard**
+  - Real-time patient reports via Firebase Firestore
+  - Filter by:
+    - Critical cases
+    - Prescribed / Unprescribed
+  - Search by name, address, or patient ID
 
-```
+- 🧾 **Doctor Prescription System**
+  - View patient history
+  - Write prescriptions, diet advice, and notes
+  - Saved securely to Firestore with timestamps
 
-Arogya-AI/
-├── ArogyaAi.ini        # Configuration file for settings
-├── src/                # Python/JS/Other source code
-├── README.md           # This documentation
-└── LICENSE             # License file (if applicable)
-
-````
-
----
-
-## ⚙️ Configuration — `ArogyaAi.ini`
-
-The `ArogyaAi.ini` file is used to store runtime settings for the Arogya-AI system. It might include:
-
-```ini
-[General]
-AppName = Arogya-AI
-Version = 1.0
-Debug = True
-
-[AI]
-Model = your_model_name_here
-APIKey = your_api_key_here
-
-[Logging]
-LogLevel = INFO
-LogFile = logs/arogyaai.log
-
-[Database]
-Host = localhost
-Port = 5432
-User = your_db_user
-Password = your_db_pass
-DatabaseName = arogya_ai_db
-````
-
-> ☝️ *This block is an illustrative example. Replace values with what your application actually requires.*
+- 📊 **Offline Risk Trend Visualization**
+  - Simple health-risk trend chart using Recharts
 
 ---
 
-## 📦 Requirements
+## 🛠 Tech Stack
 
-Before running, ensure you have the required packages installed. For example, in Python:
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Firebase (Auth + Firestore)
+- **Charts:** Recharts
+- **Icons:** lucide-react
+- **Auth:** Anonymous / Custom Token Firebase Auth
+- **AI Logic:** Rule-based + ML-inspired risk scoring (offline)
 
-```bash
-pip install -r requirements.txt
-```
+---
 
-Or in Node.js:
+## 📥 Input Parameters (AI Model)
 
-```bash
-npm install
-```
+The simulated AI model uses **10 inputs**:
+
+| Index | Parameter |
+|-----|-----------|
+| 0 | Age |
+| 1 | Gender |
+| 2 | Systolic BP |
+| 3 | Fasting Sugar |
+| 4 | Body Temperature |
+| 5 | SpO₂ |
+| 6 | Symptom Severity |
+| 7 | Structured Symptom Score |
+| 8 | HbA1c |
+| 9 | Cholesterol |
+
+---
+
+## 🔐 Firebase Configuration
+
+Firebase config is injected via environment variables:
+
+- `__firebase_config`
+- `__app_id`
+- `__initial_auth_token`
+
+Authentication falls back to **anonymous login** if no token is provided.
 
 ---
 
 ## ▶️ Running the Project
 
-Run the main application file (replace with your actual start file):
-
 ```bash
-python main.py
+npm install
+npm start
+````
+
+---
+
+## ⚠️ Medical Disclaimer
+
+This application **does not replace professional medical advice**.
+All recommendations are preliminary and for educational/demo purposes only.
+Always consult a certified healthcare professional for diagnosis and treatment.
+
+---
+
+## 📄 License
+
+This project is intended for **academic, demo, and research purposes**.
+
+---
+
+## 🙏 Acknowledgements
+
+Built to support **digital healthcare access**, **offline AI**, and **PHC efficiency**.
+
 ```
-
-Or in Node.js:
-
-```bash
-node index.js
 ```
-
----
-
-## 🛠 Configuration Tips
-
-✔ Keep your API keys secure — use environment variables or vaults instead of committing them
-✔ Set debug to `False` in production
-✔ Use meaningful log paths for easier debugging
-
----
-
-## 📘 Contributing
-
-You’re welcome to contribute! Please follow these guidelines:
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests where applicable
-4. Open a Pull Request
-
----
-
